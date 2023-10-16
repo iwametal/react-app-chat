@@ -28,11 +28,8 @@ firebase.initializeApp({
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
-const analytics = firebase.analytics();
+// const analytics = firebase.analytics();
 
-if (process.env.NODE_ENV !== 'production') {
-  analytics.disabled();
-}
 
 function App() {
 
@@ -53,6 +50,7 @@ function App() {
   );
 }
 
+
 function SignIn() {
 
   const signInWithGoogle = () => {
@@ -68,6 +66,7 @@ function SignIn() {
 
 }
 
+
 function SignOut() {
   // return auth.currentUser && (
   //   <button className="sign-out" onClick={() => auth.signOut()}><img src={signout_icon} className='sign-out-img'/>サインアウト</button>
@@ -81,12 +80,11 @@ function SignOut() {
 function ChatRoom() {
   const dummy = useRef();
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(25);
+  const query = messagesRef.orderBy('createdAt').limit(21);
 
   const [messages] = useCollectionData(query, { idField: 'id' });
 
   const [formValue, setFormValue] = useState('');
-
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -133,7 +131,6 @@ function ChatMessage(props) {
     <div className={`message ${messageClass}`}>
       <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
       <p>{text}</p>
-      <p>{process.env.NODE_ENV}</p>
     </div>
   </>)
 }
