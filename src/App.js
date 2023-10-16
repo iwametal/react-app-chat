@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react';
+
+// Stylesheet
 import './App.css';
 
+// Database
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
@@ -8,6 +11,10 @@ import 'firebase/compat/analytics';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+
+// Icons
+import signout_icon from './assets/icons/logout.png'
+import signin_icon from './assets/icons/login.png'
 
 firebase.initializeApp({
   apiKey: "AIzaSyA5se0ppA0ncnPn8hYoQOWqR2OWJbJsKzE",
@@ -23,6 +30,9 @@ const auth = firebase.auth();
 const firestore = firebase.firestore();
 const analytics = firebase.analytics();
 
+if (process.env.NODE_ENV !== 'production') {
+  analytics.disabled();
+}
 
 function App() {
 
@@ -52,16 +62,18 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>Bem vindo ao chat da Putaria</p>
+      <img className='sign-in-img' onClick={signInWithGoogle} src={signin_icon}/>
     </>
   )
 
 }
 
 function SignOut() {
+  // return auth.currentUser && (
+  //   <button className="sign-out" onClick={() => auth.signOut()}><img src={signout_icon} className='sign-out-img'/>サインアウト</button>
+  // )
   return auth.currentUser && (
-    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+    <img src={signout_icon} className='sign-out-img' onClick={() => auth.signOut()}/>
   )
 }
 
@@ -105,7 +117,7 @@ function ChatRoom() {
 
       <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="メッセージを入力" />
 
-      <button type="submit" disabled={!formValue}>🕊️</button>
+      <button type="generic-button submit send-msg" disabled={!formValue}>🕊️</button>
 
     </form>
   </>)
@@ -121,6 +133,7 @@ function ChatMessage(props) {
     <div className={`message ${messageClass}`}>
       <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
       <p>{text}</p>
+      <p>{process.env.NODE_ENV}</p>
     </div>
   </>)
 }

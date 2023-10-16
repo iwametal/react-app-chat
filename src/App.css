@@ -16,7 +16,8 @@ header h1 {
 }
 
 .App header {
-  background-color: #181717;
+  /* background-color: #181717; */
+  background-image: linear-gradient(to top, #0c0c0c, #000);
   height: 10vh;
   min-height: 50px;
   color: white;
@@ -37,11 +38,15 @@ header h1 {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  background-color: rgb(40, 37, 53);
+  background-image: linear-gradient(to bottom, #0c0c0c, #000);
 }
 
 main {
-  background-image: url("../assets/img/2023-09-23.jpg");
+  background-image: url("assets/img/2023-09-23.jpg");
+  background-size: 47em;
+  /* background-attachment: fixed; */
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 10px;
   height: 80vh;
   margin: 10vh 0 10vh;
@@ -56,6 +61,7 @@ main::-webkit-scrollbar {
 
 main::-webkit-scrollbar-track {
   background: #1e1e24;
+  /* background-image: linear-gradient(to bottom, #1c1c1c, #b393d3); */
 }
 
 main::-webkit-scrollbar-thumb {
@@ -67,6 +73,7 @@ form {
   position: fixed;
   bottom: 0;
   background-color: rgb(24, 23, 23);
+  /* background-image: linear-gradient(to bottom, #1c1c1c, #b393d3); */
   width: 100%;
   max-width: 728px;
   display: flex;
@@ -75,22 +82,25 @@ form {
 
 form button {
   width: 20%;
-  background-color: rgb(56, 56, 143);
+  /* background-color: rgb(56, 56, 143); */
+  background-image: linear-gradient(to bottom, #b393d3, #1c1c1c);
+  /* background-image: linear-gradient(to bottom, #1c1c1c, #b393d3); */
 }
 
 input {
   line-height: 1.5;
   width: 100%;
   font-size: 1.5rem;
-  background: rgb(58, 58, 58);
+  background: rgb(23.5, 23.5, 23.5);
   color: white;
   outline: none;
   border: none;
   padding: 0 10px;
 }
 
-button {
-  background-color: #282c34; /* Green */
+.generic-button {
+  background-image: linear-gradient(to bottom, #b393d3, #1c1c1c);
+  /* background-color: #282c34; */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -106,11 +116,37 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.sign-in {
+/* .sign-in {
   color: #282c34;
   background: white;
   max-width: 400px;
   margin: 0 auto;
+} */
+
+.sign-in-img {
+  align-self: center;
+  height: 4.2em;
+  width: auto;
+  cursor: pointer;
+}
+
+/* button.sign-out {
+  background-image: linear-gradient(to bottom, #b393d3, #1c1c1c);
+  border: none;
+  color: white;
+  padding: 0.5em 1em;
+  text-align: right;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.25rem;
+} */
+
+.sign-out-img {
+  position: relative;
+  height: 3em;
+  width: auto;
+  cursor: pointer;
 }
 
 ul, li {
@@ -140,8 +176,8 @@ p {
 }
 
 .sent p {
-  color: white;
-  background: #0b93f6;
+  color: black;
+  background: #c18dd1;
   align-self: flex-end;
 }
 .received p {
