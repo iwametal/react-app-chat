@@ -17,13 +17,13 @@ import signout_icon from './assets/icons/logout.png'
 import signin_icon from './assets/icons/login.png'
 
 firebase.initializeApp({
-  apiKey: "AIzaSyA5se0ppA0ncnPn8hYoQOWqR2OWJbJsKzE",
-  authDomain: "app-chat-ecbcd.firebaseapp.com",
-  projectId: "app-chat-ecbcd",
-  storageBucket: "app-chat-ecbcd.appspot.com",
-  messagingSenderId: "480244476668",
-  appId: "1:480244476668:web:f7d91b6b478b7a94614579",
-  measurementId: "G-ER4N5FGELF"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 })
 
 const auth = firebase.auth();
